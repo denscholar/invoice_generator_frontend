@@ -152,3 +152,10 @@ th, td {
   border-radius: 5px;
   cursor: pointer;
 }
+
+
+.heading h5{
+  color: #1c1c1cd6;
+  font-size: 14px;
+  font-weight: 600;
+}

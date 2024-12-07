@@ -8,7 +8,9 @@ import Button from '../button/Button'
 
 const Form = () => {
 
-  const { addRow, deleteRow, rows } = useContext(InputItemContext)
+  const { addRow, deleteRow, invoice } = useContext(InputItemContext)
+  console.log(invoice);
+  
   return (
     <>
       <form action="" className='form-container'>
@@ -36,8 +38,8 @@ const Form = () => {
                 <h5>Amount</h5>
               </div>
             </div>
-            {rows.map((row) => (
-              <div style={{ display: "flex", gap: "10px" }}>
+            {invoice.rows.map((row) => (
+              <div style={{ display: "flex", gap: "10px" }}key={row.id}>
                 <Item type="text" style={{ width: '280px' }} />
                 <Item type="number" style={{ width: '70px' }} />
                 <Item type="number" style={{ width: '70px' }} />
