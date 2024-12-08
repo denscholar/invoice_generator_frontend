@@ -1,12 +1,11 @@
-.generate-invoice-wrapper{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    margin: 0 auto;
+.generate-invoice-wrapper {
+  margin: 20px 20px;
+  /* padding: 30px; */
+  background: #ffffff;
+  width: 100%;
 }
 
-.generate-invoice-wrapper button{
+/* .generate-invoice-wrapper button{
     padding: 12px 22px;
     font-size: 18px;
     font-weight: 600;
@@ -16,4 +15,118 @@
     color: white;
     border-radius: 4px;
     cursor: pointer;
+} */
+
+.logo-wrapper {
+  display: flex;
+  padding: 30px;
+}
+
+.details-billto {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+.details-billto .bill-to-wrapper,
+.details {
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+.details-billto h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.details-billto p {
+  font-size: 12px;
+}
+table{
+    background: #ecebeb;
+    width: 92%;
+    border-collapse: collapse;
+    margin: 40px 20px 15px 25px;
+    border: 1px solid #8f8f8f;
+}
+
+
+thead th:nth-child(1) {
+  width: 50%;
+  text-align: left;
+  padding: 10px 10px;
+  border-bottom: 1px solid black;
+  
+  
+}
+
+thead th:nth-child(2){
+    width: 20%;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+thead th:nth-child(3){
+    width: 10%;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+thead th:nth-child(4){
+    width: 20%;
+    text-align: left;
+    border-bottom: 1px solid black;
+}
+tr td{
+    padding: 10px 10px;
+    text-align: left;
+    border: 1px solid #303030;
+}
+
+
+.total{
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.sub-total p{
+    padding: 5px;
+    
+}
+
+.total-amount{
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.sub-total-amount p{
+    padding: 5px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.total-amount-figure{
+        font-size: 20px;
+        font-weight: 800;
+}
+
+.footer-details{
+    background-color: #2b2868;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-top: 40px;
+    color: white;
+}
+
+.total-amount-footer{
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.invoice-details-footer p{
+    font-size: 14px;
+    padding: 2px 0;
 }
