@@ -1,28 +1,30 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Invoice.css'
-
+import { InputItemContext } from '../../contexts/ItemsContext'
 
 const Invoice = () => {
+  const { invoice, total } = useContext(InputItemContext)
+
   return (
     <div className='generate-invoice-wrapper'>
       <div className='logo-wrapper'>
         <div className="invoice">
           <h1>INVOICE</h1>
-          <p className="number">#002121</p>
+          <p className="number">{invoice.invoiceNum}</p>
         </div>
         <div className="logo-image">
-          <img src="" alt="" />
+          <img src={invoice.logo.name} alt="logo" />
         </div>
       </div>
       <div className="details-billto">
-        <div className="details">
-          <h3>Musemind</h3>
-          <p>3 Raliat Kolejo street, ikorodu</p>
-        </div>
-        <div className="bill-to-wrapper">
-          <h3>Musemind</h3>
-          <p>3 Raliat Kolejo street, ikorodu</p>
-        </div>
+        {invoice.companyDetails && (<div className="details">
+          {/* <h3>Musemind</h3> */}
+          <p>{invoice.companyDetails}</p>
+        </div>)}
+        {invoice.billTo && (<div className="bill-to-wrapper">
+          {/* <h3>Musemind</h3> */}
+          <p>{invoice.billTo}</p>
+        </div>)}
       </div>
 
       {/* table */}
@@ -36,30 +38,15 @@ const Invoice = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Website development </td>
-            <td>2000</td>
-            <td>1</td>
-            <td>100000</td>
+          {invoice.rows.map((row) => (
+          <tr key={row.id}>
+            <td>{row.item}</td>
+            <td>{row.rate}</td>
+            <td>{row.qty}</td>
+            <td>{row.amount}</td>
           </tr>
-          <tr>
-            <td>Website development </td>
-            <td>2000</td>
-            <td>1</td>
-            <td>100000</td>
-          </tr>
-          <tr>
-            <td>Website development </td>
-            <td>2000</td>
-            <td>1</td>
-            <td>100000</td>
-          </tr>
-          <tr>
-            <td>Website development </td>
-            <td>2000</td>
-            <td>1</td>
-            <td>100000</td>
-          </tr>
+          ))}
+    
         </tbody>
       </table>
       <div className="total">
@@ -70,21 +57,21 @@ const Invoice = () => {
           <p className='total-amount'>Total</p>
         </div>
         <div className="sub-total-amount">
-          <p>$50,000.00</p>
+          <p>${total}</p>
           <p>-</p>
           <p>-</p>
-          <p className='total-amount-figure'>$50,000.0</p>
+          <p className='total-amount-figure'>${total}</p>
         </div>
       </div>
       <div className="footer-details">
         <div className="invoice-details-footer">
           <p className="details-footer">Invoice Details</p>
-          <p className="date-issued">Date Issued: 12/04/2024 </p>
-          <p className="due-date">Due Date: 12/04/2024 </p>
+          <p className="date-issued">Date Issued: {invoice.dateIssued} </p>
+          <p className="due-date">Due Date: {invoice.dueDate} </p>
         </div>
         <div className="summary-amount">
           <p className="total-amount-word">Total Amount</p>
-          <h2 className="total-amount-footer">$48,5000.00</h2>
+          <h2 className="total-amount-footer">${total}</h2>
         </div>
       </div>
     </div>

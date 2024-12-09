@@ -1,10 +1,10 @@
 import React from 'react'
 import './Item.css'
 
-const Item = ({type, style}) => {
+const Item = ({type, style, onChange, value, readOnly}) => {
   return (
     <div className='item-input'>
-        <input style={style} type={type} />
+        <input style={style} value={value} type={type} onChange={onChange} readOnly={readOnly} />
     </div>
   )
 }

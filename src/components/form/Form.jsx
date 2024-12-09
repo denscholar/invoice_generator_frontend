@@ -8,23 +8,28 @@ import Button from '../button/Button'
 
 const Form = () => {
 
-  const { addRow, deleteRow, invoice } = useContext(InputItemContext)
-  console.log(invoice);
-  
+  const { addRow, deleteRow, invoice, updateRow, createInvoice } = useContext(InputItemContext)
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(invoice);
+};
+
   return (
     <>
-      <form action="" className='form-container'>
+      <form action="" className='form-container' onSubmit={handleSubmit}>
         <div className="upper-region">
           <div className='invoice-details'>
             <div className='invoice-detail-wrapper'>
-              <Input label="Logo" type='file' />
-              <TextArea className="bill-tor" name="" label="Your company detail" />
-              <Input label="Date issued" type='date' name="dateIssue" />
+              <Input label="Logo" type='file' onChange={(e) => createInvoice('logo', e.target.files[0])} />
+              <TextArea className="bill-tor" name="" label="Your company detail" onChange={(e) => createInvoice('companyDetails', e.target.value)} />
+              <Input label="Date issued" type='date' name="dateIssue" onChange={(e) => createInvoice('dateIssued', e.target.value)}  />
+
             </div>
             <div className='invoice-detail-wrapper'>
-              <Input className="invoice-number" label="Invoice number" type='text' name="dateIssue" />
-              <TextArea className="bill-tor" name="" label="Bill to" />
-              <Input className="due-date" label="Due date" type='date' name="dueDate" />
+              <Input className="invoice-number" label="Invoice number" type='text' name="dateIssue" onChange={(e) => createInvoice('invoiceNum', e.target.value)} />
+              <TextArea className="bill-tor" name="" label="Bill to" onChange={(e) => createInvoice('billTo', e.target.value)}  />
+              <Input className="due-date" label="Due date" type='date' name="dueDate" onChange={(e) => createInvoice('dueDate', e.target.value)} />
             </div>
           </div>
         </div>
@@ -39,11 +44,11 @@ const Form = () => {
               </div>
             </div>
             {invoice.rows.map((row) => (
-              <div style={{ display: "flex", gap: "10px" }}key={row.id}>
-                <Item type="text" style={{ width: '280px' }} />
-                <Item type="number" style={{ width: '70px' }} />
-                <Item type="number" style={{ width: '70px' }} />
-                <Item type="number" style={{ width: '70px' }} />
+              <div style={{ display: "flex", gap: "10px" }} key={row.id}>
+                <Item type="text" style={{ width: '280px' }} value={row.item} onChange={(e) => updateRow(row.id, 'item', e.target.value)} />
+                <Item type="number" style={{ width: '70px' }} value={row.rate} onChange={(e) => updateRow(row.id, 'rate', Number(e.target.value))} />
+                <Item type="number" style={{ width: '70px' }} value={row.qty} onChange={(e) => updateRow(row.id, 'qty', Number(e.target.value))} />
+                <Item type="number" style={{ width: '70px' }} value={row.amount} readOnly />
                 <button onClick={() => deleteRow(row.id)} className='delete-button'>&times;</button>
               </div>
             ))}
