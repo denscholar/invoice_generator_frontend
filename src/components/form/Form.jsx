@@ -21,7 +21,13 @@ const Form = () => {
         <div className="upper-region">
           <div className='invoice-details'>
             <div className='invoice-detail-wrapper'>
-              <Input label="Logo" type='file' onChange={(e) => createInvoice('logo', e.target.files[0])} />
+              <Input label="Logo" type='file' onChange={(e)=>{
+                const file = e.target.files[0];
+                if(file){
+                  const logoURL = URL.createObjectURL(file);
+                  createInvoice('logo', logoURL)
+                }
+              }} />
               <TextArea className="bill-tor" name="" label="Your company detail" onChange={(e) => createInvoice('companyDetails', e.target.value)} />
               <Input label="Date issued" type='date' name="dateIssue" onChange={(e) => createInvoice('dateIssued', e.target.value)}  />
 
