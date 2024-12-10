@@ -3,7 +3,8 @@
 A simple React-based project to generate and save invoices as PDF files using html2pdf.js.
 
 
-<img width="938" alt="invoice_generator2024-12-10 132226" src="https://github.com/user-attachments/assets/abd1d600-3c61-4bf9-a3d6-79a6b75d48e3">
+<img width="938" alt="invoice_generator2024-12-10 132226" src="https://github.com/user-attachments/assets/b650a5e2-e5dd-48a8-826f-faed723c6901">
+
 
 
 ## Table of Contents
